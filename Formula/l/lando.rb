@@ -1,5 +1,5 @@
 class Lando < Formula
-  desc "Push button local development environments."
+  desc "Push button development environments."
   homepage "https://docs.lando.dev"
   url "https://github.com/lando/core/archive/refs/tags/v3.23.0.tar.gz"
   sha256 "1b48a0a94626f85192664248592f182b2fbf335d999c3e8dece4c0d39a2ddb09"
@@ -16,7 +16,7 @@ class Lando < Formula
     system "npm", "install", "--production", *std_npm_args
     system "npm", "add", "@yao-pkg/pkg@5.15.0"
     system "npx", "pkg", "--config", "package.json", "--targets", "node20", "--options", "'dns-result-order=ipv4first'", "bin/lando"
-    bin.install libexec.glob("dist/@lando/core/*")
+    bin.install "dist/@lando/core" => "lando"
   end
 
   def caveats
